@@ -1,0 +1,72 @@
+server:
+    port: 6666
+    contextPath:
+
+spring:
+    profiles:
+        active: dev
+
+    thymeleaf:
+        cache: false
+
+    jade4j:
+        caching: false
+
+# ===================================================================
+# datasource config
+# druid alibaba database connection pool
+# ===================================================================
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/weblog?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        username: root
+        password: admin
+        type: com.alibaba.druid.pool.DruidDataSource
+        initial-size: 5
+        min-idle: 5
+        max-active: 20
+        max-wait: 6000
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: 300000
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+        poolPreparedStatements: true
+        filters: stat,wall,log4j
+
+    hibernate:
+      dialect: org.hibernate.dialect.MySQLDialect
+      hbm2ddl.auto: update
+      show_sql: false
+
+    redis:
+      host: localhost
+      port: 6397
+      default_expire_time: 86400
+      password: passwd_redis
+
+# ===================================================================
+# datasource config
+# druid alibaba database connection pool
+# ===================================================================
+#spring.datasource.url=jdbc:mysql://120.26.139.183:3306/liegou_game_race?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;rewriteBatchedStatements=true
+#spring.datasource.username=root
+#spring.datasource.password=admin
+#spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+#spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+## 连接池初始化大小，最小，最大
+#spring.datasource.initial-size=5
+#spring.datasource.min-idle=5
+#spring.datasource.max-active=20
+## 配置获取连接等待超时的时间
+#spring.datasource.max-wait=60000
+## 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+#spring.datasource.time-between-eviction-runs-millis=60000
+## 配置一个连接在池中最小生存的时间，单位是毫秒
+#spring.datasource.min-evictable-idle-time-millis=300000
+#spring.datasource.test-while-idle=true
+#spring.datasource.test-on-borrow=false
+#spring.datasource.test-on-return=false
+#spring.datasource.poolPreparedStatements=true
+## 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+#spring.datasource.filters=stat,wall,log4j
